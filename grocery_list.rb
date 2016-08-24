@@ -18,14 +18,24 @@ class GroceryList
   # As shown above, each item should be on a line next to the number of
   # desired items, separated by a dash. Remember that you can use the special
   # \n character to move to the next line.
+
   def to_s
-    return "FIX ME"
+    #item_name #dash #number #\n
+    total = ""
+    @items_hash.to_a.each do |item_name, fruit_count|
+      total += "#{item_name} - #{fruit_count}\n"
+    end
+    return total
   end
 
   def write_to_file
-    # TODO: output the string version of this list from to_s into a text file.
-    # This way, we can print out the text file and take it to the store with us.
+#     # TODO: output the string version of this list from to_s into a text file.
+#     # This way, we can print out the text file and take it to the store with us.
+      out_put = open("what_to_buy.txt", "a")
+      out_put.write(to_s)
+      out_put.close
   end
+
 end
 
 # RUNNER CODE. DO NOT CHANGE BELOW THIS LINE.
@@ -47,6 +57,7 @@ while true
 end
 
 # At this point, we have collected all the items that the user wants.
-# We just want to print them out and write the result to a text file.
+# # We just want to print them out and write the result to a text file.
+
 puts my_grocery_list
 my_grocery_list.write_to_file()
